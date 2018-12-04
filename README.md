@@ -30,6 +30,10 @@
 6. Start server on localhost:3000.
    - npm start
 
+7. To clear Redis cache (or wait 60 minutes, or set the cache time lower)
+   - redis-cli
+   - DEL 1 2 3 4 5 6 7 8 9 10 11 12
+
 ## Requirements
 
 A PostgreSQL database titled "redis_demo" must be running locally. See knexfile.js for database connection details.

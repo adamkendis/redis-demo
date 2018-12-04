@@ -7,6 +7,10 @@ const redis = require('redis');
 const client = redis.createClient();
 
 const app = express();
+
+// Middleware that attaches X-Response-Time header on responses. 
+// With the server running, visit localhost:3000/<1 through 12>
+// In Chrome Devtools Network tab, view the GET request Headers for X-Response-Time
 app.use(responseTime());
 
 
@@ -43,7 +47,23 @@ const getFromRedis = (req, res) => {
 };
 
 
+// With Redis caching
 app.get('/:id', getFromRedis);
+
+
+// Without Redis caching
+// app.get('/:id', (req, res) => {
+//   // http://localhost:3000/25   ->   id = 25
+//   let id = req.params.id;
+//   // Query table 'postgres' for id.
+//   knex('postgres').where('id', id).first()
+//     .then(data => {
+//       // Log the data retrieved from Postgres.
+//       console.log('Retrieved from POSTGRES: ', data);
+//       res.end();
+//     })
+//     .catch(err => console.log('Error: ', err))
+// });
 
 
 app.listen(3000, () => {
