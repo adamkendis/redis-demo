@@ -1,0 +1,21 @@
+{
+  "name": "redis-demo",
+  "version": "1.0.0",
+  "description": "Add Redis caching to a Node server",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "nodemon server/server.js --watch",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run latest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.7",
+    "pg": "^7.7.1",
+    "redis": "^2.8.0",
+    "response-time": "^2.3.2"
+  }
+}
